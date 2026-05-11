@@ -167,14 +167,14 @@ body {
     background-color: #444;
 }
 
-.top-info {
+.collection-stats {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 14px;
     margin-bottom: 28px;
 }
 
-.info-box {
+.stat-card {
     background-color: #f7f7f7;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -184,17 +184,17 @@ body {
     gap: 6px;
 }
 
-.info-number {
+.stat-value {
     font-size: 28px;
     font-weight: bold;
 }
 
-.info-label {
+.stat-name {
     color: #666;
     font-size: 14px;
 }
 
-.filter-area {
+.filter-form {
     background-color: #f7f7f7;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -206,18 +206,18 @@ body {
     margin-bottom: 24px;
 }
 
-.filter-item {
+.filter-field {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.filter-item label {
+.filter-field label {
     font-weight: bold;
     font-size: 14px;
 }
 
-.filter-item select {
+.filter-field select {
     min-width: 170px;
     padding: 10px 12px;
     border: 1px solid #ccc;
@@ -305,7 +305,7 @@ body {
         align-items: flex-start;
     }
 
-    .top-info {
+    .collection-stats {
         grid-template-columns: repeat(2, 1fr);
     }
 }

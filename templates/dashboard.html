@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card">
+    <div class="dashboard-header">
+        <div>
+            <h2>My Collection</h2>
+        </div>
+
+        <a href="/add" class="add-button">Add New Item</a>
+    </div>
+
+    <div class="collection-stats">
+        <div class="stat-card">
+            <span class="stat-value">{{ total_count }}</span>
+            <span class="stat-name">Total</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-value">{{ movie_count }}</span>
+            <span class="stat-name">Movies</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-value">{{ book_count }}</span>
+            <span class="stat-name">Books</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-value">{{ completed_count }}</span>
+            <span class="stat-name">Completed</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-value">{{ average_rating }}</span>
+            <span class="stat-name">Average Rating</span>
+        </div>
+    </div>
+
+    <form method="GET" class="filter-form">
+        <div class="filter-field">
+            <label>Type</label>
+            <select name="type">
+                <option value="">All</option>
+                {% for item_type in type_options %}
+                    <option value="{{ item_type }}" {% if selected_type == item_type %}selected{% endif %}>
+                        {{ item_type }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter-field">
+            <label>Status</label>
+            <select name="status">
+                <option value="">All</option>
+                {% for status in status_options %}
+                    <option value="{{ status }}" {% if selected_status == status %}selected{% endif %}>
+                        {{ status }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <input type="submit" value="Filter" class="filter-button">
+        <a href="/" class="clear-link">Clear</a>
+    </form>
+
+    <hr>
+
+    {% if items|length == 0 %}
+        <div class="empty-state">
+            <h3>No items yet</h3>
+            <p>Add your first movie or book to start your collection.</p>
+        </div>
+    {% endif %}
+
+    <div class="item-list">
+        {% for item in items %}
+            <div class="item-card">
+                <div class="item-main">
+                    <a href="/read/{{ item['id'] }}" class="item-title">{{ item["title"] }}</a>
+                    <p>
+                        {{ item["item_type"] }}
+                        {% if item["creator"] %}
+                            by {{ item["creator"] }}
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="item-details">
+                    <span>{{ item["status"] }}</span>
+
+                    {% if item["rating"] %}
+                        <span>Rating: {{ item["rating"] }}/5</span>
+                    {% else %}
+                        <span>No rating</span>
+                    {% endif %}
+
+                    <a href="/edit/{{ item['id'] }}">Edit</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

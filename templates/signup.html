@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="auth-card">
+    <h2>Sign Up</h2>
+    <p class="muted">Sign up to manage your own movie and book collection.</p>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" class="auth-form">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Choose a username"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                required
+            >
+        </div>
+
+        <button type="submit" class="primary-button">Sign Up</button>
+    </form>
+
+    <p class="small-text">
+        Already have an account? <a href="/signin">Sign in here</a>.
+    </p>
+</section>
+{% endblock %}

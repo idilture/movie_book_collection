@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="auth-card">
+    <h2>Add Item</h2>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" class="auth-form">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label>Type</label>
+            <select name="item_type" required>
+                {% for item_type in type_options %}
+                    <option value="{{ item_type }}">{{ item_type }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Author / Director</label>
+            <input type="text" name="creator">
+        </div>
+
+        <div class="form-group">
+            <label>Genre</label>
+            <input type="text" name="genre">
+        </div>
+
+        <div class="form-group">
+            <label>Status</label>
+            <select name="status" required>
+                {% for status in status_options %}
+                    <option value="{{ status }}">{{ status }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Rating</label>
+            <input type="number" name="rating" min="1" max="5">
+        </div>
+
+        <div class="form-group">
+            <label>Year</label>
+            <input type="number" name="release_year">
+        </div>
+
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea name="notes" rows="5"></textarea>
+        </div>
+
+        <button type="submit" class="primary-button">Save</button>
+    </form>
+</section>
+{% endblock %}

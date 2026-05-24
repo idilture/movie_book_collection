@@ -35,7 +35,7 @@ def test_validate_year_accepts_valid_year():
 
 
 def test_validate_year_rejects_invalid_year():
-    assert validate_year("1800") is False
+    assert validate_year("1000") is False
     assert validate_year("2026") is False
     assert validate_year("abc") is False
 

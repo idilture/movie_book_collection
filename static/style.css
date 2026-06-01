@@ -324,3 +324,25 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+.edit-link {
+    color: #7a2e3a;
+    font-weight: bold;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+.delete-button {
+    border: none;
+    background-color: #b23a48;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #8f2f3a;
+}

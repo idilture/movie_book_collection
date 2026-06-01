@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card">
+    <div class="dashboard-header">
+        <div>
+            <h2>{{ item["title"] }}</h2>
+            <p class="muted">Item details</p>
+        </div>
+
+        <a href="/" class="add-button">Back to Dashboard</a>
+    </div>
+
+    <div class="item-list">
+        <div class="item-card">
+            <div class="item-main">
+                <p><strong>Type:</strong> {{ item["item_type"] }}</p>
+
+                {% if item["creator"] %}
+                    <p><strong>Creator:</strong> {{ item["creator"] }}</p>
+                {% endif %}
+
+                {% if item["genre"] %}
+                    <p><strong>Genre:</strong> {{ item["genre"] }}</p>
+                {% endif %}
+
+                <p><strong>Status:</strong> {{ item["status"] }}</p>
+
+                {% if item["rating"] %}
+                    <p><strong>Rating:</strong> {{ item["rating"] }}/5</p>
+                {% else %}
+                    <p><strong>Rating:</strong> No rating</p>
+                {% endif %}
+
+                {% if item["release_year"] %}
+                    <p><strong>Release Year:</strong> {{ item["release_year"] }}</p>
+                {% endif %}
+
+                {% if item["notes"] %}
+                    <p><strong>Notes:</strong> {{ item["notes"] }}</p>
+                {% endif %}
+            </div>
+
+            <div class="item-details">
+                <a href="/edit/{{ item['id'] }}" class="edit-link">Edit</a>
+
+                <form method="POST" action="/delete/{{ item['id'] }}" class="delete-form">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

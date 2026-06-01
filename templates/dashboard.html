@@ -79,7 +79,10 @@
         {% for item in items %}
             <div class="item-card">
                 <div class="item-main">
-                    <a href="/read/{{ item['id'] }}" class="item-title">{{ item["title"] }}</a>
+                    <a href="/read/{{ item['id'] }}" class="item-title">
+                        {{ item["title"] }}
+                    </a>
+
                     <p>
                         {{ item["item_type"] }}
                         {% if item["creator"] %}
@@ -97,7 +100,11 @@
                         <span>No rating</span>
                     {% endif %}
 
-                    <a href="/edit/{{ item['id'] }}">Edit</a>
+                    <a href="/edit/{{ item['id'] }}" class="edit-link">Edit</a>
+
+                    <form method="POST" action="/delete/{{ item['id'] }}" class="delete-form">
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
                 </div>
             </div>
         {% endfor %}
